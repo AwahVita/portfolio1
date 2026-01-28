@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background: #222;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .hamburger {
+            font-size: 26px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .menu {
+            list-style: none;
+            background: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li a {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu li a:hover {
+            background: #444;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">MySite</div>
+        <div class="hamburger">☰</div>
+    </header>
+
+    <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">University</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    
+    <p>New Hero Added</p>
+
+
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            function responsiveMenu() {
+                let winWidth = $(window).width();
+                let winHeight = $(window).height();
+
+                // Desktop condition
+                if (winWidth >= 768 && winHeight >= 500) {
+                    $('.menu').show().css({
+                        display: 'flex',
+                        background: 'none'
+                    });
+
+                    $('.menu li a').css({
+                        padding: '0 15px'
+                    });
+
+                    $('.hamburger').hide();
+                }
+                // Mobile condition
+                else {
+                    $('.menu').hide().css({
+                        display: 'block',
+                        background: '#333'
+                    });
+
+                    $('.menu li a').css({
+                        padding: '15px'
+                    });
+
+                    $('.hamburger').show();
+                }
+            }
+
+            // Run on page load
+            responsiveMenu();
+
+            // Run on resize
+            $(window).on('resize', function() {
+                responsiveMenu();
+            });
+
+            // Hamburger toggle (mobile only)
+            $('.hamburger').on('click', function() {
+                $('.menu').slideToggle();
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
